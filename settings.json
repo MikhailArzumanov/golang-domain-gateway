@@ -1,0 +1,49 @@
+/**
+ * File constructed by next conditions:
+ * 
+ * \First three displayed fields 
+ * corresponds to the gateway parameters -- 
+ * Host, certificate and key.
+ * 
+ * \Last displayed field -- "ProxyTable" -- 
+ * corresponds to the gateway target hosts.
+ * 
+ * \It is the list, contains next structure:
+ * == "DomainKey" -- domain, that gateway recieved as pointed to him.
+ * == "Dest*" -- parameters of proxy's target, 
+ * ==== if "DomainKey" field of the current entry corresponds to request's host, 
+ * ==== then proxy will set "Dest*" parameters as its target.
+ * 
+ */
+{
+  "ProxyHost":"%GATEWAY HOST%:%GATEWAY PORT%",
+	"CertPath":	"%YOUR CERTIFICATE FILE HERE%",
+	"KeyPath": "%YOUR KEY FILE HERE%%",
+  "ProxyTable" : [
+    {
+      "DomainKey" : "%YOUR DOMAIN%",
+      "DestScheme" : "%DESTINATION HOST SCHEME%",
+      "DestHost" : "%DESTINATION HOST%",
+      "DestPort" : "%DESTINATION PORT%"
+    },
+    //examples below
+    {
+      "DomainKey" : "backend.localhost",
+      "DestScheme" : "http",
+      "DestHost" : "localhost",
+      "DestPort" : "1444"
+    },
+    {
+      "DomainKey" : "frontend.localhost",
+      "DestScheme" : "http",
+      "DestHost" : "localhost",
+      "DestPort" : "1452"
+    },
+    {
+      "DomainKey" : "integration.localhost",
+      "DestScheme" : "https",
+      "DestHost" : "google.com",
+      "DestPort" : "443"
+    }
+  ]
+}
